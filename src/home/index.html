@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Group Mail Classifier for Outlook</title>
+    <title><%= htmlWebpackPlugin.options.appName %></title>
     <style>
       :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
       body { margin: 0; background: #f5f7fb; color: #172033; line-height: 1.5; }
@@ -27,12 +27,13 @@
   <body>
     <main>
       <header>
-        <h1>Group Mail Classifier for Outlook</h1>
+        <h1>Project Overview</h1>
         <p>Classify Outlook messages by group recipients, apply categories, and optionally move messages to configured folders.</p>
         <p class="links">
-          <a href="https://github.com/kingchun1991/outlook-group-mail-classifier">GitHub repository</a>
+          <a href="<%= htmlWebpackPlugin.options.repository %>">GitHub repository</a>
           <a href="README.md">README</a>
           <a href="manifest.xml">manifest.xml</a>
+          <a href="<%= htmlWebpackPlugin.options.baseUrl %>/manifest.xml">Manifest link</a>
         </p>
       </header>
 
@@ -49,7 +50,7 @@
       </section>
 
       <section>
-        <h2>Configuration Example</h2>
+        <h2>Configuration Examples</h2>
         <h3>Single Rule Example</h3>
         <pre>Rule Name: AIOps
 Group Email: aiops@company.com
@@ -57,8 +58,12 @@ TO_ONLY: AIOps Direct
 TO_INCLUDED: AIOps Shared
 CC_ONLY: AIOps FYI
 CC_INCLUDED: AIOps Monitor</pre>
-        <h3>Multiple Rule Example</h3>
-        <p>AIOps, NOC, SOC, Finance, HR, and Service Desk can each have their own group mailbox and folders. The first matching rule wins.</p>
+        <h3>Multi Rule Example</h3>
+        <pre>AIOps       aiops@company.com
+NOC         noc@company.com
+Service Desk servicedesk@company.com
+
+First match wins.</pre>
         <p>Rules are stored per user. Changes made in Settings are stored inside Outlook and take effect immediately.</p>
         <p><strong>Notice:</strong> This public website only hosts the application. User rules are not stored in GitHub; they are stored in Outlook Roaming Settings.</p>
       </section>
@@ -70,7 +75,8 @@ CC_INCLUDED: AIOps Monitor</pre>
 
       <section>
         <h2>Build Information</h2>
-        <p>Build version: <strong><%= htmlWebpackPlugin.options.version %></strong></p>
+        <p>Version: <strong><%= htmlWebpackPlugin.options.version %></strong></p>
+        <p>Production site: <a href="<%= htmlWebpackPlugin.options.pagesUrl %>"><%= htmlWebpackPlugin.options.pagesUrl %></a></p>
         <p>Last deployment time: <time id="deployment-time">Unavailable</time></p>
       </section>
 

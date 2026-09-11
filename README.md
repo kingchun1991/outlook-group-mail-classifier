@@ -183,3 +183,49 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md). Pull requests should include tests for
 ## License
 
 This project is available under the [MIT License](./LICENSE).
+## Configuration
+
+### Single Rule Example
+
+Configure a rule in the Settings page with a name, group email, and optional folder mappings:
+
+```text
+Rule Name: AIOps
+Group Email: aiops@company.com
+TO_ONLY: Inbox/AIOps Direct
+TO_INCLUDED: Inbox/AIOps Shared
+```
+
+## Multi Group Support
+
+Add as many rules as needed. Rules are evaluated in order and the first matching rule wins.
+
+```text
+AIOps          aiops@company.com
+NOC            noc@company.com
+Service Desk   servicedesk@company.com
+```
+
+## User Settings
+
+Rules, folder mappings, and preferences are stored in Outlook `Office.context.roamingSettings`. They are per-user and are not stored in `.env` files or GitHub.
+
+## GitHub Pages Deployment
+
+Push to `main` to build, validate, and deploy the site to GitHub Pages. Production URLs come from `.env.production`.
+
+## OWA Installation
+
+In Outlook on the web, open **Get Add-ins > My add-ins > Add a custom add-in > Add from file**, then upload `dist/manifest.xml`.
+
+## New Outlook Installation
+
+Open **More apps / Get Add-ins > My add-ins > Add a custom add-in > Add from file**, then upload `dist/manifest.xml`.
+
+## Desktop Outlook Installation
+
+Open **Home > Get Add-ins > My add-ins > Add a custom add-in > Add from file**, then upload `dist/manifest.xml`.
+
+## Troubleshooting
+
+Run `npm run build && npm run validate`. Confirm that the manifest is generated from `manifest.template.xml`, contains no `localhost` in production, and points to the deployed Pages URL.
