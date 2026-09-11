@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group Mail Classifier for Outlook</title>
+    <style>
+      :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+      body { margin: 0; background: #f5f7fb; color: #172033; line-height: 1.5; }
+      main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+      section { background: #fff; border: 1px solid #dfe4ed; border-radius: 8px; margin: 1rem 0; padding: 1.25rem; }
+      h1, h2 { line-height: 1.2; }
+      a { color: #075eaa; }
+      ul { padding-left: 1.25rem; }
+      .links { display: flex; flex-wrap: wrap; gap: 1rem; }
+      .status { display: flex; justify-content: space-between; border-bottom: 1px solid #e7eaf0; padding: .5rem 0; }
+      .status:last-child { border-bottom: 0; }
+      pre { max-height: 28rem; overflow: auto; white-space: pre-wrap; background: #f5f7fb; padding: 1rem; }
+      @media (prefers-color-scheme: dark) {
+        body { background: #111827; color: #e5e7eb; }
+        section { background: #1f2937; border-color: #374151; }
+        a { color: #8ecbff; }
+        pre { background: #111827; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Group Mail Classifier for Outlook</h1>
+        <p>Classify Outlook messages by group recipients, apply categories, and optionally move messages to configured folders.</p>
+        <p class="links">
+          <a href="https://github.com/kingchun1991/outlook-group-mail-classifier">GitHub repository</a>
+          <a href="README.md">README</a>
+          <a href="manifest.xml">manifest.xml</a>
+        </p>
+      </header>
+
+      <section>
+        <h2>Quick Start</h2>
+        <p>Install dependencies with <code>npm ci</code>, run <code>npm start</code> for local development, or run <code>npm run build</code> to create the production files in <code>dist</code>.</p>
+        <h2>Outlook Installation</h2>
+        <ul>
+          <li><strong>OWA:</strong> Get Add-ins &gt; My add-ins &gt; Add a custom add-in &gt; Add from file.</li>
+          <li><strong>New Outlook:</strong> More apps / Get Add-ins &gt; My add-ins &gt; Add a custom add-in &gt; Add from file.</li>
+          <li><strong>Desktop Outlook:</strong> Home &gt; Get Add-ins &gt; My add-ins &gt; Add a custom add-in &gt; Add from file.</li>
+        </ul>
+        <p>Upload <a href="manifest.xml">manifest.xml</a>, then open a message and choose Mail Classifier.</p>
+      </section>
+
+      <section>
+        <h2>Configuration Example</h2>
+        <h3>Single Rule Example</h3>
+        <pre>Rule Name: AIOps
+Group Email: aiops@company.com
+TO_ONLY: AIOps Direct
+TO_INCLUDED: AIOps Shared
+CC_ONLY: AIOps FYI
+CC_INCLUDED: AIOps Monitor</pre>
+        <h3>Multiple Rule Example</h3>
+        <p>AIOps, NOC, SOC, Finance, HR, and Service Desk can each have their own group mailbox and folders. The first matching rule wins.</p>
+        <p>Rules are stored per user. Changes made in Settings are stored inside Outlook and take effect immediately.</p>
+        <p><strong>Notice:</strong> This public website only hosts the application. User rules are not stored in GitHub; they are stored in Outlook Roaming Settings.</p>
+      </section>
+
+      <section>
+        <h2>Endpoint Health Check</h2>
+        <div id="health-status" aria-live="polite">Checking endpoints...</div>
+      </section>
+
+      <section>
+        <h2>Build Information</h2>
+        <p>Build version: <strong><%= htmlWebpackPlugin.options.version %></strong></p>
+        <p>Last deployment time: <time id="deployment-time">Unavailable</time></p>
+      </section>
+
+      <section>
+        <h2>README</h2>
+        <details>
+          <summary>Show the primary project documentation</summary>
+          <pre id="readme-content">Loading README.md...</pre>
+        </details>
+      </section>
+    </main>
+  </body>
+</html>

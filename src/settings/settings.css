@@ -1,0 +1,2 @@
+body { margin: 0; font-family: Segoe UI, sans-serif; }
+.settings-shell { display: grid; gap: 16px; padding: 24px; max-width: 560px; margin: auto; }
