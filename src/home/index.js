@@ -1,4 +1,4 @@
-const endpoints = ['taskpane.html', 'settings.html', 'commands.html', 'manifest.xml'];
+const endpoints = ['manifest.xml', 'taskpane.html', 'settings.html', 'commands.html'];
 const healthStatus = document.querySelector('#health-status');
 
 async function checkEndpoint(endpoint) {
@@ -16,7 +16,7 @@ async function checkEndpoint(endpoint) {
 async function renderHealthStatus() {
   const results = await Promise.all(endpoints.map(checkEndpoint));
   healthStatus.innerHTML = results
-    .map(({ endpoint, reachable }) => `<div class="status"><span>${endpoint}</span><span>${reachable ? '✅ Reachable' : '❌ Failed'}</span></div>`)
+    .map(({ endpoint, reachable }) => `<div class="status"><span>${endpoint}</span><span>${reachable ? '✅ Healthy' : '❌ Failed'}</span></div>`)
     .join('');
 }
 
