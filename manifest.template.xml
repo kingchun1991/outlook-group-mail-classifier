@@ -12,10 +12,6 @@
   <AppDomains><AppDomain>{{BASE_URL}}</AppDomain></AppDomains>
   <Hosts><Host Name="Mailbox"/></Hosts>
   <Requirements><Sets><Set Name="Mailbox" MinVersion="1.5"/></Sets></Requirements>
-  <FormSettings>
-    <Form xsi:type="ItemRead"><DesktopSettings><SourceLocation DefaultValue="{{BASE_URL}}/taskpane.html"/><RequestedHeight>450</RequestedHeight></DesktopSettings></Form>
-    <Form xsi:type="ItemEdit"><DesktopSettings><SourceLocation DefaultValue="{{BASE_URL}}/taskpane.html"/><RequestedHeight>450</RequestedHeight></DesktopSettings></Form>
-  </FormSettings>
   <Permissions>ReadWriteMailbox</Permissions>
   <Rule xsi:type="RuleCollection" Mode="And"><Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/></Rule>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversion" xsi:type="VersionOverridesV1_0">
@@ -26,7 +22,7 @@
         <DesktopFormFactor>
           <FunctionFile resid="functionFile"/>
           <ExtensionPoint xsi:type="MessageReadCommandSurface"><OfficeTab id="TabDefault"><Group id="classifierGroup"><Label resid="groupLabel"/><Control xsi:type="Button" id="classifyButton"><Label resid="classifyLabel"/><Supertip><Title resid="classifyLabel"/><Description resid="classifyDescription"/></Supertip><Icon><bt:Image size="16" resid="icon16"/><bt:Image size="32" resid="icon32"/><bt:Image size="80" resid="icon80"/></Icon><Action xsi:type="ShowTaskpane"><SourceLocation resid="taskpaneUrl"/></Action></Control></Group></OfficeTab></ExtensionPoint>
-          <ExtensionPoint xsi:type="Events"><Event Type="ItemSend" FunctionExecution="onItemSend"/></ExtensionPoint>
+          <ExtensionPoint xsi:type="Events"><Event Type="ItemSend" FunctionName="onItemSend"/></ExtensionPoint>
         </DesktopFormFactor>
       </Host></Hosts>
       <Resources>
